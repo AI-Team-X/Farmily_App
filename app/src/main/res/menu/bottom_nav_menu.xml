@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home" />
+    <item
+        android:id="@+id/check_crop_disease"
+        android:icon="@drawable/ic_baseline_local_florist_24"
+        android:title="@string/check_crop_disease" />
+    <item
+        android:id="@+id/find_customer"
+        android:icon="@drawable/ic_baseline_local_florist_24"
+        android:title="@string/find_customer" />
+    <item
+        android:id="@+id/sales_summary"
+        android:icon="@drawable/ic_baseline_local_florist_24"
+        android:title="@string/sales_summary" />
+
+    <item
+        android:id="@+id/title_notifications"
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:title="@string/title_notifications" />
+    <item
+        android:id="@+id/ask_expert"
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:title="@string/ask_expert" />
+
+    <item
+        android:id="@+id/account_details"
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:title="@string/account_details" />
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:title="@string/share" />
+
+</menu>
