@@ -8,4 +8,14 @@
     <color name="headings">#33cc33</color>
     <color name="buttons">#b3ff1a</color>
     <color name="nav_bc">#99ff66</color>
+
+    <!--    color change for button -->
+
+    <color name="gradient_start_color">#00d024</color>
+    <color name="gradient_end_color">#00d024</color>
+
+    <!--    color for tab-->
+
+    <color name="tab_indicator_gray">#c0c0c0</color>
+
 </resources>
