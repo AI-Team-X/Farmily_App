@@ -37,11 +37,11 @@ public class SignUp extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
     ImageView showUserProfile;
-    private final Integer PICK_IMAGE_REQUEST=1;
+    private final Integer PICK_IMAGE_REQUEST = 1;
     Bitmap bitmap;
     Uri uri;
     FirebaseAuth auth;
-    String user_email,user_password,user_full_name,user_nin,user_phone_number;
+    String user_email, user_password, user_full_name, user_nin, user_phone_number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,7 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
-    private void defineView(){
+    private void defineView() {
         emailId = (EditText) findViewById(R.id.emailLogin);
         password = findViewById(R.id.sign_up_password);
         fullName = (EditText) findViewById(R.id.fullName);
@@ -75,20 +75,21 @@ public class SignUp extends AppCompatActivity {
         phoneNumber = findViewById(R.id.phoneNumber);
         btnSignup = findViewById(R.id.btn_signup);
         tvSignIn = findViewById(R.id.textView11);
-        showUserProfile=findViewById(R.id.imageView9);
-
-    }
-    private void initView(){
-        auth=FirebaseAuth.getInstance();
+        showUserProfile = findViewById(R.id.imageView9);
 
     }
 
-    private boolean validate(){
-        boolean isValid=false;
+    private void initView() {
+        auth = FirebaseAuth.getInstance();
+
+    }
+
+    private boolean validate() {
+        boolean isValid = false;
 
         user_email = emailId.getText().toString();
         user_password = password.getText().toString();
-         user_full_name = fullName.getText().toString();
+        user_full_name = fullName.getText().toString();
         user_nin = NIN.getText().toString();
         user_phone_number = phoneNumber.getText().toString();
         if (TextUtils.isEmpty(user_email)) {
@@ -106,18 +107,18 @@ public class SignUp extends AppCompatActivity {
         } else if (TextUtils.isEmpty(user_phone_number)) {
             password.setError("Please enter your phone number");
             password.requestFocus();
-        }
-        else if(uri==null)
+        } else if (uri == null)
             Toast.makeText(this, "Please select the image", Toast.LENGTH_SHORT).show();
         else
-            isValid=true;
+            isValid = true;
         return isValid;
     }
-    private void addCLicklistener(){
+
+    private void addCLicklistener() {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(validate())
+                if (validate())
                     registerUserToDatabse();
             }
         });
@@ -136,13 +137,13 @@ public class SignUp extends AppCompatActivity {
 
     }
 
-    private void registerUserToDatabse(){
+    private void registerUserToDatabse() {
 
-        try{
-            auth.createUserWithEmailAndPassword(user_email,user_password).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
+        try {
+            auth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    Toast.makeText(SignUp.this, "succesfully created user::email is:"+ task.getResult().getUser().getEmail(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, "succesfully created user::email is:" + task.getResult().getUser().getEmail(), Toast.LENGTH_SHORT).show();
                     addUserInDatabse(task.getResult().getUser());
                 }
             });
@@ -152,24 +153,24 @@ public class SignUp extends AppCompatActivity {
         }
 
 
-
     }
-    private void addUserInDatabse(final FirebaseUser firebaseUser){
+
+    private void addUserInDatabse(final FirebaseUser firebaseUser) {
 
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         byte[] data = bytes.toByteArray();
         Bundle bundle = getIntent().getExtras();
 
-      //  final String user_type = bundle.getString("Choice");
+        //  final String user_type = bundle.getString("Choice");
         FirebaseStorage.getInstance().getReference().child("AllUsers").child(firebaseUser.getUid())
                 .child("profile_pic")
                 .putBytes(data)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        String url=taskSnapshot.getUploadSessionUri().toString();
-                        User user=new User("Farmer",user_nin,firebaseUser.getEmail(), user_password, user_phone_number, user_full_name,url,firebaseUser.getUid());
+                        String url = taskSnapshot.getUploadSessionUri().toString();
+                        User user = new User("Farmer", user_nin, firebaseUser.getEmail(), user_password, user_phone_number, user_full_name, url, firebaseUser.getUid());
                         FirebaseDatabase.getInstance().getReference().child("all_users")
                                 .child(firebaseUser.getUid()).setValue(user);
                         Toast.makeText(SignUp.this, "succesfully added!:", Toast.LENGTH_SHORT).show();
@@ -178,6 +179,7 @@ public class SignUp extends AppCompatActivity {
                     }
                 });
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
