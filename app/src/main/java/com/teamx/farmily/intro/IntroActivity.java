@@ -38,8 +38,6 @@ public class IntroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        overridePendingTransition(R.anim.bottom_to_top, R.anim.fading);
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -95,7 +93,7 @@ public class IntroActivity extends AppCompatActivity {
 
                 if (position == mList.size() - 1) { // when we rech to the last screen
 
-                    loaddLastScreen();
+                    loadLastScreen();
                 }
             }
         });
@@ -106,7 +104,7 @@ public class IntroActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == mList.size() - 1) {
 
-                    loaddLastScreen();
+                    loadLastScreen();
                 }
             }
 
@@ -158,7 +156,7 @@ public class IntroActivity extends AppCompatActivity {
     }
 
 
-    private void loaddLastScreen() {
+    private void loadLastScreen() {
         btnNext.setVisibility(View.INVISIBLE);
         btnGetStarted.setVisibility(View.VISIBLE);
         tvSkip.setVisibility(View.INVISIBLE);

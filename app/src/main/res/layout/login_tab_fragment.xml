@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/signin_country_code_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/rounded_edittext"
+            android:padding="7dp"
+            app:ccp_autoDetectCountry="true"
+            app:ccp_showFlag="true"
+            app:ccp_showFullName="false"
+            app:ccp_showNameCode="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias=".2"
+            app:layout_constraintWidth_percent=".8" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_phone"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:theme="@style/LoginTextInputLayoutStyle"
+            app:endIconMode="clear_text"
+            app:endIconTint="#351500"
+            app:layout_constraintBottom_toBottomOf="@+id/signin_country_code_picker"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/signin_country_code_picker"
+            app:startIconDrawable="@drawable/ic_phone"
+            app:startIconTint="#351500">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_phone_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/lato"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:textCursorDrawable="@null" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_password"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:theme="@style/LoginTextInputLayoutStyle"
+            app:endIconMode="password_toggle"
+            app:endIconTint="#351500"
+            app:layout_constraintEnd_toEndOf="@+id/til_phone"
+            app:layout_constraintStart_toStartOf="@+id/signin_country_code_picker"
+            app:layout_constraintTop_toBottomOf="@+id/til_phone"
+            app:startIconDrawable="@drawable/ic_password"
+            app:startIconTint="#351500">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:fontFamily="@font/lato"
+                android:hint="Password"
+                android:inputType="text|textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/btn_signin"
+            style="@style/Widget.Design.FloatingActionButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/lato_bold"
+            android:text="LOGIN"
+            android:textColor="#00d024"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:backgroundTint="#E8F8D5"
+            app:layout_constraintEnd_toEndOf="@+id/til_password"
+            app:layout_constraintStart_toStartOf="@+id/til_password"
+            app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password" />
+
+        <TextView
+            android:id="@+id/tv_forgot_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/lato"
+            android:text="Forgot Password?"
+            android:textAlignment="textEnd"
+            android:textColor="#351500"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/til_password"
+            app:layout_constraintStart_toStartOf="@+id/til_password"
+            app:layout_constraintTop_toBottomOf="@+id/til_password" />
+
+        <ProgressBar
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="32dp"
+            android:indeterminateTint="#00d024"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
